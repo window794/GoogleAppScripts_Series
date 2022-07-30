@@ -22,11 +22,12 @@ function getLastWorkday(){
         return dt_lastDate;
     }else{
         for(let i=1; i<6; i ++){
-        let dt_checkDate = new Date(dt_lastDate.getFullYear(), dt_lastDate.getMonth(), dt_lastDate.getDate() - i); //i分日付を遡る
-        let result = checkWeekday(dt_checkDate);
-        if(result){
-            return dt_checkDate;
-        }
+            //月末が平日でなかったら、前の日…その前の日…を遡るようにした。最大で5日前まで遡るようにしている…
+            let dt_checkDate = new Date(dt_lastDate.getFullYear(), dt_lastDate.getMonth(), dt_lastDate.getDate() - i); //i分日付を遡る
+            let result = checkWeekday(dt_checkDate);
+            if(result){
+                return dt_checkDate;
+            }
     }
 
     }
