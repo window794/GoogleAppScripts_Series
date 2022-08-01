@@ -11,14 +11,14 @@ function addTask() {
 }
 
 function getLastWeekday(){
+  //その週の最終営業日を取得する関数
   //参考：https://www.shanaidx.com/checkendofweekday/
     let today = new Date();
-    //月曜日をトリガにして
-    let dt_fridayDate = new Date(today.getFullYear(), today.getMonth() + 4, 0) //金曜日を長い日付形式で取得
-    let result = checkWeekday(dt_lastDate);
+    let dt_fridayDate = new Date(today.getFullYear(), today.getMonth(), today.getDay() + 4, 0) //金曜日を長い日付形式で取得
+    let result = checkWeekday(dt_fridayDate);
     
     if(result){
-      //月末が平日だったら
+      //金曜日が平日だったら
         return dt_fridayDate;
     }else{
         for(let i=1; i<6; i ++){
